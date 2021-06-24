@@ -1,0 +1,91 @@
+<!-- Llamar a cabecera -->
+<%- include('../partials/header') -%>
+
+
+<div class="container py-2">
+
+    <h1 class="teal_kire bold_Kire text-center" >List CMD Hacks</h1>
+
+    <div class="row">
+        <!-- form -->
+        <div class="col-md-4">
+            <div class="card bg-dark card_kire">
+                <form action="/cmd/newCmd" method="POST"> <!-- form --> 
+                    <div class="card-header teal_kire">
+                        New Entry
+                    </div>
+                    <div class="card-body">
+
+                        <% if (cmdMessage.length > 0 ) { %>
+                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                              <strong> <%= cmdMessage %> </strong>
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <% } %>
+
+
+                        <div class="mb-3">
+                            <input id="cmd_input" type="text" class="form-control bg-dark gris_kire" style="border: none;"
+                            name="cmd"    placeholder="Enter CMD" >
+                        </div>
+
+                        <div class="mb-3">
+                            <textarea id="description-input" rows="5" class="form-control bg-dark gris_kire border-0"
+                            name="description"    placeholder="Descriptions"></textarea>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-outline-info">Save</button>
+                            <button type="reset" class="btn btn-outline-danger btnReset">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- table -->
+        <div class="col-md-8">
+            <div class="card bg-dark card_kire">
+                <div class="card-header teal_kire">
+                    CMD (list)
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <table class="table">
+                            <thead>
+                                <tr class="teal_kire">
+                                    <th scope="col">CMD</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col" class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="gris_kire" >
+                                <% if (listCMD) { -%>
+                                    <% listCMD.forEach(function(item){ %>
+                                            <tr>
+                                                <td> <%= item.cmd %></td>
+                                                <td> <%= item.description %>  </td>
+                                                <td class="text-center">
+                                                    <a href="/<%= item._id %>">
+                                                        <i class="fas fa-minus-circle fa-2x text-danger fa-red mx-1 " role="button"></i>
+                                                    </a> 
+                                                </td>
+                                            </tr>
+                                    <% }); %>
+                
+                                <% } else {  %>
+                                    <p class="text-center"> Sin datos disponibles</p>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+       
+</div>
+
+
+<!-- Llamar a cabecera -->
+<%- include('../partials/footer') -%>

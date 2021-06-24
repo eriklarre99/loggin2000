@@ -1,0 +1,54 @@
+<!-- Llamar a cabecera -->
+<%- include('../partials/header') -%>
+
+
+<div class="container py-5">
+
+
+    <!-- table -->
+    <div class="card bg-dark card_kire">
+        <div class="card-header">
+            <h1 class="teal_kire bold_Kire">List Users</h1>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <table class="table" id="tablaCategory">
+                    <thead>
+                        <tr class="teal_kire">
+                            <th scope="col">Username </th>
+                            <th scope="col">Email </th>
+                            <th scope="col" class="text-center">Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="gris_kire" id="listaCategory">
+
+                        <% if (listUsers) { -%>
+
+                            <% listUsers.forEach(function(item){ %>
+
+                            <tr>
+                                <td><%= item.username %> </td>
+                                <td> <%= item.email %> </td>
+                                <td class="text-center">
+                                    <a href="/<%= item._id %>">
+                                        <i class="fas fa-minus-circle fa-2x text-danger fa-red mx-1 " role="button"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                        <% }); %>
+
+                        <% } else {  %>
+                            <p class="text-center"> Sin datos disponibles</p>
+                        <% } %>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+       
+</div>

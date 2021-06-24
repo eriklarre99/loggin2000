@@ -1,0 +1,19 @@
+<!-- Llamar a cabecera -->
+<%- include('../partials/header') -%>
+
+
+<div class="container py-5">
+
+    <div class="col mx-auto ">
+        <!-- <a href="/"></a> -->
+            <h1 class="hoverEffects bold_Kire mb-5 text-center"><%= user.username %></h1>
+        <!-- </a> -->
+
+        <p> <b> Password Encrypt: </b> <%= user.password %> </p>
+        <p> <b> User Id: </b> <%= user._id%> </p>
+
+        <p class="text-center"> Good start of session </p>
+        
+    </div>
+
+</div>
